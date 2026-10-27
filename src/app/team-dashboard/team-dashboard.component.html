@@ -1,0 +1,104 @@
+<main class="team-dashboard">
+  <header class="page-heading">
+    <div>
+      <p class="eyebrow">QA PORTAL</p>
+      <h1>Team dashboard</h1>
+      <p class="intro">Create teams and keep their members together.</p>
+    </div>
+    <a class="back-link" routerLink="/dashboard" aria-label="Back to dashboard">
+      <span aria-hidden="true">&larr;</span> Back to dashboard
+    </a>
+  </header>
+
+  <p class="storage-message" role="status" *ngIf="storageMessage">
+    {{ storageMessage }}
+  </p>
+
+  <section class="team-layout" aria-label="Team management">
+    <form class="team-form" (ngSubmit)="addTeam()">
+      <h2>Add a team</h2>
+
+      <label for="team-name">Team name</label>
+      <input
+        id="team-name"
+        name="teamName"
+        [(ngModel)]="teamName"
+        placeholder="e.g. Platform QA"
+        required
+      >
+
+      <label for="team-members">Team members</label>
+      <textarea
+        id="team-members"
+        name="members"
+        [(ngModel)]="memberInput"
+        placeholder="Enter names separated by commas"
+        rows="4"
+        required
+      ></textarea>
+      <p class="field-hint">Separate each member with a comma.</p>
+
+      <button class="add-button" type="submit">Add team</button>
+    </form>
+
+    <section class="team-list" aria-labelledby="team-list-heading">
+      <form class="search-form" (ngSubmit)="searchMembers()">
+        <label for="member-search">Search team members</label>
+        <div class="search-controls">
+          <input
+            id="member-search"
+            name="memberSearch"
+            [(ngModel)]="memberSearch"
+            placeholder="Enter a member name"
+          >
+          <button class="search-button" type="submit">Search</button>
+        </div>
+      </form>
+
+      <section class="search-results" *ngIf="hasSearched" aria-live="polite" aria-labelledby="search-results-heading">
+        <h2 id="search-results-heading">Search results</h2>
+        <p class="empty-state" *ngIf="!searchedMember">
+          Enter a member name to search.
+        </p>
+        <p class="empty-state" *ngIf="searchedMember && memberSearchResults.length === 0">
+          No team members matched “{{ searchedMember }}”.
+        </p>
+        <ul class="result-list" *ngIf="memberSearchResults.length > 0">
+          <li *ngFor="let result of memberSearchResults">
+            <span class="result-member">{{ result.member }}</span>
+            <span class="result-team">{{ result.teamName }}</span>
+          </li>
+        </ul>
+      </section>
+
+      <div class="list-heading">
+        <h2 id="team-list-heading">Teams</h2>
+        <span class="team-count">{{ teams.length }}</span>
+      </div>
+
+      <p class="empty-state" *ngIf="teams.length === 0">
+        No teams yet. Add one to get started.
+      </p>
+
+      <article class="team-record" *ngFor="let team of teams">
+        <div class="record-heading">
+          <div>
+            <h3>{{ team.name }}</h3>
+            <p>{{ team.members.length }} {{ team.members.length === 1 ? 'member' : 'members' }}</p>
+          </div>
+          <button
+            class="delete-button"
+            type="button"
+            (click)="deleteTeam(team.id)"
+            [attr.aria-label]="'Delete ' + team.name"
+          >
+            Delete
+          </button>
+        </div>
+        <ul>
+          <li *ngFor="let member of team.members">{{ member }}</li>
+        </ul>
+      </article>
+    </section>
+  </section>
+</main>

@@ -1,0 +1,29 @@
+<h2>QA Portal Login</h2>
+
+<div>
+  <label for="username">Username</label>
+
+  <input
+    id="username"
+    type="text"
+    [(ngModel)]="username">
+</div>
+
+<br>
+
+<div>
+  <label for="password">Password</label>
+
+  <input
+    id="password"
+    type="password"
+    [(ngModel)]="password">
+</div>
+
+<br>
+
+<button type="button" (click)="login()">
+  Login
+</button>
+
+<p>{{ errorMessage }}</p>

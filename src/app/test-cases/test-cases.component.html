@@ -1,0 +1,30 @@
+<h2>Test Cases</h2>
+
+<table border="1">
+
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Test Case</th>
+      <th>Priority</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <tr *ngFor="let testCase of testCases">
+
+      <td>{{ testCase.id }}</td>
+
+      <td>{{ testCase.title }}</td>
+
+      <td>{{ testCase.priority }}</td>
+
+      <td>{{ testCase.status }}</td>
+
+    </tr>
+
+  </tbody>
+
+</table>

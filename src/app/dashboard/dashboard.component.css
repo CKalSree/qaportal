@@ -1,0 +1,94 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f3f5f2;
+  color: #202a26;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.dashboard {
+  display: grid;
+  align-content: center;
+  width: min(100% - 40px, 960px);
+  min-height: 100vh;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 56px 0;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #527362;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+h1 {
+  margin: 0 0 12px;
+  font-size: 36px;
+}
+
+.welcome {
+  margin: 0;
+  color: #68756e;
+  font-size: 17px;
+}
+
+.dashboard-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.dashboard-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border: 1px solid #315d46;
+  border-radius: 4px;
+  padding: 0 18px;
+  font-weight: 650;
+  text-decoration: none;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+
+.dashboard-button.primary {
+  background: #315d46;
+  color: #fff;
+}
+
+.dashboard-button.primary:hover {
+  background: #244a36;
+}
+
+.dashboard-button.secondary {
+  background: transparent;
+  color: #315d46;
+}
+
+.dashboard-button.secondary:hover {
+  background: #dce8df;
+}
+
+.dashboard-button:focus-visible {
+  outline: 2px solid #3e7657;
+  outline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+  .dashboard {
+    width: min(100% - 32px, 520px);
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .dashboard-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
